@@ -6,7 +6,7 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 15:05:16 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/08/21 19:24:48 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/09/04 12:02:16 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,8 @@ int					ft_print_octal(char *format, va_list ap, t_flags *f)
 		if (f->minus == 1)
 			ret += print_minus(tmp, f, 0, format);
 		else
-		{
-			if (f->pre != -1 || nbr != 0)
-				ret += ft_print_unsigned(nbr, 8, 0);
-		}
+			f->pre != -1 || nbr != 0 ? (ret += ft_print_unsigned(nbr, 8, 0))
+				: 0;
 		free(tmp);
 	}
 	ret = ft_unsigned(nbr, f, ret, format);

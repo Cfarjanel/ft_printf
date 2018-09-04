@@ -6,97 +6,11 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 15:04:53 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/08/23 18:18:49 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/09/04 12:14:23 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-static int		cheat_width_wstr(t_flags *f, int len, wchar_t *str, int ret)
-{
-	if (f->width < len)
-	{
-		ft_putnchar(' ', f->width - len);
-		if (f->pre != -1)
-		{
-			ret = len;
-			ft_putwstr(str);
-		}
-	}
-	else
-	{
-		ft_putnchar(' ', f->width - len);
-		ret = (f->width - len) + len;
-		ft_putwstr(str);
-	}
-	return (ret);
-}
-
-static int		wwdpc_next(t_flags *flag, wchar_t *str, int ret)
-{
-	int		len;
-
-	len = ft_wstrlen(str);
-	if (flag->pre >= len)
-	{
-		if (flag->width > 0 && flag->minus == 0)
-			ret += ft_putnchar(' ', flag->width - len);
-		if (flag->pre != -1)
-			ret += ft_putwstr(str);
-	}
-	else
-	{
-		if (flag->width > 0 && flag->minus == 0)
-			ret += ft_putnchar(' ', flag->width - flag->pre);
-	}
-	if (flag->pre < len && flag->pre > 0)
-		ret += ft_putnstr((char*)str, flag->pre);
-	if (flag->minus == 1)
-		ret = minus_wstr(flag, str, ret);
-	return (ret);
-}
-
-static int		width_prec_wstr(t_flags *f, wchar_t *str, int ret)
-{
-	int	len;
-
-	len = ft_wstrlen(str);
-	if (f->zero == 1 && f->width > 0)
-	{
-		ret += ft_putnchar('0', f->width - len) + len;
-		ft_putwstr(str);
-	}
-	else if (f->zero == 0 && f->width > 0 && f->pre == 0 && f->minus == 0)
-	{
-		ret += cheat_width_wstr(f, len, str, ret);
-	}
-	else if (f->width > 0 && (f->pre == 0 || f->pre == -1))
-	{
-		if (f->minus == 0 || f->pre == -1)
-		{
-			ret += ft_putnchar(' ', f->width);
-			if (f->pre != -1)
-			{
-				ret += ft_putwstr(str);
-			}
-		}
-		else
-		{
-			ret += minus_wstr(f, str, ret);
-		}
-	}
-	else if (f->pre > 0)
-	{
-		ret = wwdpc_next(f, str, ret);
-	}
-	else if (f->pre > 0 && f->width > 0 && f->width > len)
-	{
-		f->pre > len ? ft_putnchar(' ', (f->width - len) - \
-			(f->pre - len)) : ft_putnchar(' ', f->width - len);
-	}
-	return (ret);
-}
-
 
 static int		cheat_width_str(t_flags *f, int len, char *str, int ret)
 {
@@ -155,7 +69,7 @@ static int		width_prec_str(t_flags *f, char *str, int ret)
 			if (f->pre != -1)
 				ret += ft_putstr(str);
 		}
-		else 
+		else
 			ret += minus_str(f, str, ret);
 	}
 	else if (f->pre > 0)
@@ -171,7 +85,6 @@ static int		ft_bigs(t_flags *flag, int ret, va_list ap)
 	wchar_t		*wstr;
 	wchar_t		*tmp;
 
-	wstr = NULL;
 	wstr = va_arg(ap, wchar_t*);
 	tmp = wstr;
 	while (*tmp)
@@ -182,9 +95,7 @@ static int		ft_bigs(t_flags *flag, int ret, va_list ap)
 		tmp++;
 	}
 	if (flag->pre > 0 || flag->width > 0)
-	{
 		ret += width_prec_wstr(flag, wstr, ret);
-	}
 	else if (wstr == NULL && flag->pre != -1)
 		ret = ft_putstr("(null)");
 	else
@@ -223,9 +134,6 @@ int				ft_sconv(char *format, va_list ap, t_flags *f)
 			ret = width_prec_str(f, str, ret);
 	}
 	else if ((*format == 's' && f->length == 1) || *format == 'S')
-	{
-//		printf("test 7\n");
 		ret += ft_bigs(f, ret, ap);
-	}
 	return (ret);
 }

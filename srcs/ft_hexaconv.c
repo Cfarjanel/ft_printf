@@ -6,7 +6,7 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 15:05:41 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/08/21 19:50:55 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/09/04 11:58:01 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,7 @@ int				ft_print_hexa(char *format, va_list ap, t_flags *f)
 		if (hexa != 0 && (f->pre == 0 || f->pre == -1))
 			ret = ft_putstr(f->bigx);
 	}
-	if (f->zero == 1)
-		ret = print_zero_decimal(f->tmp, f, hexa, format);
+	f->zero == 1 ? (ret = print_zero_decimal(f->tmp, f, hexa, format)) : 0;
 	ret += hexa_final(format, f->tmp, f, hexa);
 	free(f->tmp);
 	return (ret + f->cheat);

@@ -11,7 +11,8 @@ SRCS = srcs/ft_cconv.c \
 	   srcs/ft_ouconv.c \
 	   srcs/ft_printf.c \
 	   srcs/ft_tools.c \
-	   srcs/ft_width_prec_decimal.c
+	   srcs/ft_width_prec_decimal.c \
+	   srcs/ft_wp_ws.c
 
 LIBFT = ./libft/libft.a
 LIB = ./libft/

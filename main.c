@@ -6,7 +6,7 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 10:45:14 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/08/23 17:53:02 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/09/04 11:33:14 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 int		main(void)
 {
 	int ret;
-/*	void	*p;
+	void	*p;
 	wchar_t	s1[4];
 	wchar_t	s2[4];
 	wchar_t	s3[4];
@@ -57,7 +57,7 @@ int		main(void)
 	s6[3] = '\0';
 	p = "bonjour";
 
-	printf("%s%s%s\n", COLOR, "-------OKAY------", END);
+/*	printf("%s%s%s\n", COLOR, "-------OKAY------", END);
 	ret = ft_printf("%lc", 254);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
 	ret = printf("%lc", 254);
@@ -103,37 +103,64 @@ int		main(void)
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
 	ret = printf("%lc", 256);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ft_putchar('\n');
-	ret = ft_printf("%S", s1);
+*/	ft_putchar('\n');
+	ret = ft_printf("%ls", s1);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = printf("%S", s1);
-	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ft_putchar('\n');
-	ret = ft_printf("%S", s2);
-	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = printf("%S", s2);
+	ret = printf("%ls", s1);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
 	ft_putchar('\n');
-	ret = ft_printf("%S", s3);
+	ret = ft_printf("%ls", s2);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = printf("%S", s3);
-	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ft_putchar('\n');
-	ret = ft_printf("%5S", s4);
-	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = printf("%5S", s4);
+	ret = printf("%ls", s2);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
 	ft_putchar('\n');
-	ret = ft_printf("%-12S", s5);
+	ret = ft_printf("%ls", s3);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = printf("%-12S", s5);
-	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ft_putchar('\n');
-	ret = ft_printf("%4S", s6);
-	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = printf("%4S", s6);
+	ret = printf("%ls", s3);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
 	ft_putchar('\n');
+	ret = ft_printf("%ls", s4);
+	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ret = printf("%ls", s4);
+	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ft_putchar('\n');
+	ret = ft_printf("%ls", s5);
+	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ret = printf("%ls", s5);
+	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ft_putchar('\n');
+	ret = ft_printf("%ls", s6);
+	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ret = printf("%ls", s6);
+	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
+
+	printf("\n%s%s%s\n", COLOR, "------UNICODE------", END);
+	ret = ft_printf("mine : %ls\n", L'œ');
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ret = ft_printf("real : %ls\n", L'œ');
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ft_putchar('\n');
+	ret = ft_printf("mine : %ls\n", L"このページでは、文字のリストについて説明します。");
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ret = ft_printf("real : %ls\n", L"このページでは、文字のリストについて説明します。");
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ft_putchar('\n');
+	ret = ft_printf("mine : %ls\n", 0x11ffff);
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ret = ft_printf("real : %ls\n", 0x11ffff);
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ft_putchar('\n');
+	ret = ft_printf("mine : %ls\n", 12335486662);
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ret = ft_printf("real : %ls\n", 12335486662);
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ft_putchar('\n');
+	ret = ft_printf("mine : %ls\n", -42);
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+	ret = ft_printf("real : %ls\n", -42);
+	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
+
+/*	ft_putchar('\n');
 	ret = ft_printf("%x", 4294967296);
 	printf("\n%s%s%d%s\n", NEW, "ret = ", ret, END);
 	ret = printf("%x", 4294967296);
@@ -807,31 +834,6 @@ int		main(void)
 	ret = printf("real : %zd\n", (long)-2147483650);
 	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
 */
-	printf("\n%s%s%s\n", COLOR, "------UNICODE------", END);
-	ret = ft_printf("mine : %ls\n", L'œ');
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = ft_printf("real : %ls\n", L'œ');
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ft_putchar('\n');
-	ret = ft_printf("mine : %ls\n", L"このページでは、文字のリストについて説明します。");
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = ft_printf("real : %ls\n", L"このページでは、文字のリストについて説明します。");
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ft_putchar('\n');
-	ret = ft_printf("mine : %ls\n", 0x11ffff);
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = ft_printf("real : %ls\n", 0x11ffff);
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ft_putchar('\n');
-	ret = ft_printf("mine : %ls\n", 12335486662);
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = ft_printf("real : %ls\n", 12335486662);
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ft_putchar('\n');
-	ret = ft_printf("mine : %ls\n", -42);
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
-	ret = ft_printf("real : %ls\n", -42);
-	printf("%s%s%d%s\n", NEW, "ret = ", ret, END);
 /*
 	printf("\n%s%s%s\n", COLOR, "------HEXA------", END);
 	printf("%s%s%s\n", RED, "options", END);

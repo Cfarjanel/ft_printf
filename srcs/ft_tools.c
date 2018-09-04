@@ -6,7 +6,7 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 17:09:11 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/08/21 19:18:35 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/09/04 11:56:04 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,12 @@ int		minus_wstr(t_flags *flag, wchar_t *str, int ret)
 		}
 		ret += ft_putnchar(' ', flag->width - len);
 	}
+	return (ret);
+}
+
+int		print_zero_char(t_flags *flag, int ret)
+{
+	if (flag->zero == 1 && flag->width > 1 && flag->width > flag->pre)
+		ret = ft_putnchar('0', flag->width - 1);
 	return (ret);
 }

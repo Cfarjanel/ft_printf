@@ -6,7 +6,7 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 05:12:09 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/08/23 16:32:37 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/09/04 12:25:41 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,10 @@ int					ft_printf(const char *format, ...);
 int					ft_print_hexa(char *fmt, va_list ap, t_flags *flag);
 int					ft_print_octal(char *fmt, va_list ap, t_flags *flag);
 int					ft_print_decimal(char *format, va_list ap, t_flags *flag);
+
+/*
+** Options
+*/
 int					print_zero_decimal(char *s, t_flags *f, int ret, char *fmt);
 int					print_zero_char(t_flags *flag, int ret);
 int					width_prec_decimal(t_flags *f, char *s, char *fmt, int n);
@@ -106,5 +110,8 @@ int					print_minus(char *s, t_flags *f, int ret, char *fmt);
 int					print_minus_char(char c, t_flags *flag, int ret);
 int					minus_str(t_flags *flag, char *str, int ret);
 int					minus_wstr(t_flags *flag, wchar_t *wstr, int ret);
+int					width_prec_wstr(t_flags *flag, wchar_t *wstr, int ret);
+int					cheat_width_wstr(t_flags *f, int len, wchar_t *w, int ret);
+int					wwdpc_next(t_flags *flag, wchar_t *wstr, int ret);
 
 #endif

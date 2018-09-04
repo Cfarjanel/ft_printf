@@ -6,7 +6,7 @@
 /*   By: cfarjane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 18:12:08 by cfarjane          #+#    #+#             */
-/*   Updated: 2018/08/23 18:32:00 by cfarjane         ###   ########.fr       */
+/*   Updated: 2018/09/04 11:56:01 by cfarjane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ static int	ft_cconv_next(int ret, t_flags *flag, va_list ap)
 		ft_putchar((char)va_arg(ap, int));
 		ret++;
 	}
-	return (ret);
-}
-
-int			print_zero_char(t_flags *flag, int ret)
-{
-	if (flag->zero == 1 && flag->width > 1 && flag->width > flag->pre)
-		ret = ft_putnchar('0', flag->width - 1);
 	return (ret);
 }
 
